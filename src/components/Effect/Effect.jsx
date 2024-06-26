@@ -4,21 +4,21 @@ function Effect() {
     const [count1, setCount1] = useState(0);
     console.log("rerendered");
 
-    useEffect(function () {
-        console.log("Rerendering")
-    });
+    // useEffect(function () {
+    //     console.log("Rerendering")
+    // });
 
-    useEffect(function () {
-        console.log("Mounting")
-    },[]);
+    // useEffect(function () {
+    //     console.log("Mounting")
+    // },[]);
 
-    useEffect(function () {
-        console.log("Count 1 changed")
-    }, [count1]);
+    // useEffect(function () {
+    //     console.log("Count 1 changed")
+    // }, [count1]);
 
-    useEffect(function () {
-        console.log("Count Changed")
-    }, [count]);
+    // useEffect(function () {
+    //     console.log("Count Changed")
+    // }, [count]);
 
     return (
         <div>

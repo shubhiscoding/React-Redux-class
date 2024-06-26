@@ -5,6 +5,7 @@ import { useState } from 'react';
 import CartContext from './context/CartContext';
 import ReduxAddToCart from './components/ReduxAddToCart/ReduxAddToCart';
 import store from './store';
+import Cart from './components/cart/cart';
 function App() {
   // state variable
   // inc
@@ -20,7 +21,7 @@ function App() {
       };
     }
     newCart[product.id].quantity += 1;
-    console.log(newCart);
+    // console.log(newCart);
     setCart(newCart);
   }
 
@@ -34,11 +35,12 @@ function App() {
     setCart(newCart);
   }
 
-  console.log(a, b);
+  // console.log(a, b);
   return (
     <CartContext.Provider value={{ cart, increaseQuantity, decreaseQuantity}}>
       <div className="App">
         <Products  />
+        <Cart />
       </div>
     </CartContext.Provider>
   );

@@ -17,7 +17,7 @@ function AddToCart({ product }) {
     let cart = useSelector((state) => {
         return state.items;
     });
-    console.log("cart", cart);
+    // console.log("cart", cart);
     const quantity = cart[product.id] ? cart[product.id].quantity : 0;
     if (quantity === 0) {
         return (

@@ -10,7 +10,7 @@ function ProductCard({ product }) {
   let iRef = useRef(0);
   let oRef = useRef(0);
   let [inputV, setInputV] = useState('Class');
-  console.log("pc", product.id)
+  // console.log("pc", product.id)
 
   // setInput(value);
   function printTitle() {
