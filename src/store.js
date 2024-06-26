@@ -1,7 +1,16 @@
 import { createStore } from "redux";
+const ADD_TO_CART = "ADD_TO_CART";
+
+const addToCart = (product) =>{
+    return {
+        type: ADD_TO_CART,
+        payload: product
+    };
+}
+
 function cartReducer(state= { items: {}}, action) {
   switch (action.type) {
-    case "ADD_TO_CART": {
+    case ADD_TO_CART: {
         const product = action.payload;
         const newCart = { ...state.items };
         if (!newCart[product.id]) {
@@ -35,7 +44,7 @@ function cartReducer(state= { items: {}}, action) {
 const store = createStore(cartReducer);
 
 export default store;
-
+export { addToCart };
 
 // action is an object 
 

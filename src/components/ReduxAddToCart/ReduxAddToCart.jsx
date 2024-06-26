@@ -1,13 +1,13 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-
+import { addToCart } from "../../store";
 function AddToCart({ product }) {
     // console.log("add to cart", product);
     let dispatch = useDispatch();
     // useSelector
     function increase() {
         //dispatch({type: , payload: })
-        dispatch({type: "ADD_TO_CART", payload: product});
+        dispatch(addToCart(product));
     }
     function decrease() {
         //dispatch({type: , payload: })
