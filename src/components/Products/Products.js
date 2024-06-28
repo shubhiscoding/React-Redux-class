@@ -2,40 +2,41 @@ import ProductCard from "../ProductCard/ProductCard";
 import Effect from "../Effect/Effect";
 import React from "react";
 import { useState, useEffect } from "react";
-import useWindowSize from "../../hooks/useWindowSize";
 function Products() {
-    // const products = [
-    //       {
-    //         id: 1,
-    //         title: "Apple iPhone 14",
-    //         price: "Rs. 1,00,000"
-    //       },
-    //       {
-    //         id: 2,
-    //         title: "Apple iPhone 13",
-    //         price: "Rs. 70,000"
-    //       },
-    //       {
-    //         id: 3,
-    //         title: "Google Pixel 7",
-    //         price: "Rs. 50,000"
-    //       },
-    //       {
-    //         id: 4,
-    //         title: "Nokia 1100",
-    //         price: "Rs. 2,000"
-    //       },
-    //       {
-    //         id: 5,
-    //         title: "Samsung Galaxy S10",
-    //         price: "Rs. 1,00,000"
-    //       },
-    //       {
-    //         id: 6,
-    //         title: "Sony Xperia S10",
-    //         price: "Rs. 1,00,000"
-    //       }
-    // ];
+  const [category, setCategory] = useState("");
+  const [myproduct, setMyProduct] = useState([]);
+    const Dummyproducts = [
+          {
+            id: 1,
+            title: "Apple iPhone 14",
+            price: "Rs. 1,00,000"
+          },
+          {
+            id: 2,
+            title: "Apple iPhone 13",
+            price: "Rs. 70,000"
+          },
+          {
+            id: 3,
+            title: "Google Pixel 7",
+            price: "Rs. 50,000"
+          },
+          {
+            id: 4,
+            title: "Nokia 1100",
+            price: "Rs. 2,000"
+          },
+          {
+            id: 5,
+            title: "Samsung Galaxy S10",
+            price: "Rs. 1,00,000"
+          },
+          {
+            id: 6,
+            title: "Sony Xperia S10",
+            price: "Rs. 1,00,000"
+          }
+    ];
   // let products = [];
 
   let [products, setProducts] = useState([]);
@@ -49,16 +50,36 @@ function Products() {
     ).then((res) => {
       // console.log(res);
       setProducts(res);
+    }).catch(()=>{
+      setProducts(Dummyproducts);
     })
   }, [])
+
+  useEffect(() => {
+    let filter = [];
+    for(let item of Object.values(products)){
+        console.log(item);
+        if(item.category == category|| category === ""){
+            filter.push(item);
+        }
+    }
+    setMyProduct(filter);
+}, [products, category])
 
   
     return (
       <div>
+        <div className="cat">
+              <select value={category} onChange={(e) => setCategory(e.target.value)}>  
+                  <option value="">All</option>
+                  <option value="1">Electronics</option>
+                  <option value="3">Jewelery</option>
+              </select>
+        </div>
           <div><Effect /></div>
             {
-                products.map(function (item, index) {
-                  return (<ProductCard key={index}  product={item} />)
+                myproduct.map(function (item) {
+                  return (<ProductCard key={item.id}  product={item} />)
                 })
             }
         </div>
